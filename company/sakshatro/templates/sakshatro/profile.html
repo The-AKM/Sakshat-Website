@@ -1,0 +1,16 @@
+{% extends 'sakshatro/index.html' %}
+
+{% block login %}
+
+
+
+<div class="container" style="font-family: Playfair Display ;">
+<h3><b>Name : </b>{{ user.name }}</h3>
+<h3><b>Contact Number :</b> {{ user.contact_number }}  </h3>
+<h3><b>Email Address : </b> {{ user.username }}  </h3>
+
+
+<h3><b>Location</b>: {{ user.Address }} <br> {{user.city}} - {{ user.zip_code }}, {{ user.state }} </h3>
+</div>
+
+{% endblock %}

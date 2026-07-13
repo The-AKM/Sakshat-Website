@@ -1,0 +1,30 @@
+{% extends 'sakshatro/index.html' %}
+{% block login %}
+
+
+
+
+<div style="margin-top: 100px;" class="container">
+
+    <h1 style=" font-family: Cinzel Decorative;">Log In</h1><br>
+    <h4>Don't have an account?  <a href="{% url 'signup' %}">Sign Up</a></h3> <br>
+        <p class="a" style="color: red;">{{ message }}</p>
+        <p class="a">{{ credential_msg }}</p>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Email</label>
+        <input type="email" class="form-control" id="formGroupExampleInput" name="email" placeholder="Email Address">
+        </div>
+        <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Password">
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Log In</button>
+        </div>
+        </form>
+        </div>
+
+{% endblock %}

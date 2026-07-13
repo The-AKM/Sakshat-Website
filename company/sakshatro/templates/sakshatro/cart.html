@@ -1,0 +1,42 @@
+{% extends 'sakshatro/index.html' %}
+{% block login %}
+
+    <div class="container">
+
+        <h1 style=" font-family: Cinzel Decorative;">Cart</h1><br>
+    <p class="a" style="font-family: Cinzel Decorative;">{{ nothing }}</p>
+
+    {% for product in carts.products.all %}
+
+    
+
+    <div class="card" style="width: 18rem;">
+  <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    {% for feature in product.features.all %}
+    <p class="card-text"> {{ feature }} </p>
+    {% endfor %}
+    <a href="{% url 'rmv_from_cart' product.id %}" class="btn btn-primary">Remove from Cart</a>
+  </div>
+</div>
+
+
+
+
+<div class="card text-center">
+  <div class="card-header" style="background-color: rgb(237, 105, 105);">
+    CheckOut
+  </div>
+  <div class="card-body" style="background-color: rgb(231, 231, 150);">
+    <h5 class="card-title">Total Amount : {{ amount }} </h5>
+    <p class="card-text">Pay via Paytm or UPI</p>
+    <a href="{% url 'payment' %}" class="btn btn-primary">CheckOut</a>
+  </div>
+  
+</div>
+
+<br><br><br>
+    {% endfor %}
+        </div>
+{% endblock %}

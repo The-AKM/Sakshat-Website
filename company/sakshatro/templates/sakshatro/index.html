@@ -1,0 +1,426 @@
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sakshat RO - Purifying Every Drop</title>
+
+
+        <link rel="icon" href="{% static 'sakshatro/sakshat_logo.png' %}">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+
+
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+        <style>
+            body { overflow-x: hidden; font-family: 'Garamond', serif; padding-top: 100px;}
+
+
+            /* Transparent Blur Header */
+            header {
+                backdrop-filter: blur(10px);
+                background: rgba(255, 255, 255, 0.7);
+                position: fixed;
+                top: 0;
+                width: 100%; 
+                z-index: 1000;
+            }
+
+            /* Gradient Text Styling */
+            .gradient-text {
+                background: linear-gradient(to right, #3d9ed2, #5628eb, #2338c3, #030e58);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-family: 'Elephant', serif;
+            }
+
+            /* Hero Section Styling */
+            .hero-section {
+
+                padding-bottom: 60px;
+            }
+
+            .hero-video {
+                width: 100%;
+                border-radius: 15px;
+                /* Mask effect only visible on larger screens for better mobile performance */
+                -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1));
+            }
+
+            @media (max-width: 768px) {
+                .hero-video { -webkit-mask-image: none; margin-top: 20px; }
+                .gradient-text { text-align: center; }
+            }
+
+            /* About Section */
+            #about { scroll-margin-top: 100px; padding: 60px 0; }
+            .about-img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+            /* Contact Section */
+            #contact {
+                background-color: #000;
+                color: white;
+                padding: 60px 0;
+                scroll-margin-top: 100px;
+            }
+            #services{
+                scroll-margin-top: 100px;
+            }
+
+            .card-custom {
+                background:linear-gradient(to right, #000000, #4c4c4c, #252525, #000000) ;
+                color: white;
+                border: none;
+                border-radius: 15px;
+                font-size: 20px;
+            }
+
+            iframe { border-radius: 15px; width: 100%; }
+
+            #ak{
+                font-size: 22px;
+            }
+
+            .services{
+                display: flex;
+            }
+
+            #product{
+                background:  #1f2937;
+                box-shadow:0 10px 15px -3px rgba(0, 0, 0, 0.3), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.1);
+                color: white;
+                border: none;
+                border-radius: 40%;
+                padding: 35px;
+                font-size: 30px;
+
+                
+            }
+            #product:hover{
+                animation: Up 0.4s ease-out forwards;
+            }
+            @keyframes Up {
+                0%{
+                    transform: translateY(0px);
+
+                }
+                100%{
+                    transform: translateY(-10px);
+                }
+            }
+        
+
+            #multi{
+                margin-top: 100px;
+                background-color: white;
+                font-size: 30px;
+                font: bold;
+                font-family: "Orbitron";
+                
+                
+            }
+            #col{
+                border:  solid #4b7cd6 ;
+                border-width: 5px;
+                border-radius: 20%;
+                font-family: "Cinzel Decorative";
+                background-color: rgb(222, 222, 153);
+                
+            }
+
+           
+            
+            #buy{
+                background:linear-gradient(to right, #3d9ed2, #5628eb, #2338c3, #030e58);
+                padding: 40px;
+                border-radius: 15%;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                transition: 0.8s ease, box-shadow 0.4 ease;
+
+            }
+            #buy:hover{
+                transform: scale(1.05);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            }
+
+            #add_to_cart{
+                background: rgb(233, 233, 122);
+                border-radius: 15%;
+                padding: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+                transition: 0.5s ease;
+
+            }
+            #add_to_cart:hover{
+                background: rgb(233, 83, 83);
+                color: white;
+                transform: scale(1.05);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            }
+            p.a{
+                margin-top: 100px;
+                font-size: 25px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
+
+        </style>
+
+
+        <script>
+            
+
+            
+
+            document.addEventListener('DOMContentLoaded', () => {
+                
+
+                
+
+                
+
+                const toastEl = document.querySelector('.toast');
+                if (toastEl) {
+                    const toast = new bootstrap.Toast(toastEl, { autohide: true, delay: 5000 });
+                    toast.show();
+                }
+                
+
+            })
+        </script>
+
+
+
+    </head>
+    <body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}">
+                    <img src="{% static 'sakshatro/sakshat_logo.png' %}" width="50" class="me-2" alt="Logo">
+                    <h3 class="gradient-text mb-0">Sakshat RO</h3>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul id="ak" class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+                        {% if user.is_authenticated %}
+                    <li><div class="dropdown">
+                        <button style="background-color: white;" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{% static 'sakshatro/user.png' %}" alt="" width="30px">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'Order_History' %}">Order History</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">
+                        <button type="button" class="btn btn-primary">
+                            <img src="{% static 'sakshatro/cart.jpg' %}" alt="Description" class="img-fluid" style="width: 30px; height: auto;">
+                            Cart
+                        </button>
+                        </ul>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+
+
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                    
+
+
+                    </a></li>
+                    
+
+
+                    </a></li>
+
+                    {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    {% if messages %}
+    {% for message in messages %}
+    <div style="margin-top: 100px;" class="container">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        
+        <strong class="me-auto">Sakshat RO</strong>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        {{ message }}
+    </div>
+    
+    </div>
+    {% endfor %}
+    {% endif %}
+
+
+
+
+        
+    {% block login %}
+
+    
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="gradient-text display-4 fw-bold" >Purifying Every Drop You Drink</h1>
+                        <p class="lead mt-4">Sakshat RO is your trusted partner in ensuring every drop of water at your home or office is pure, safe, and healthy. We specialize in prompt installation, reliable repair, and maintenance.</p>
+                    
+                        <a href="{% url 'products' %}"><button id="product">Buy Our Products</button></a>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <video autoplay muted loop class="hero-video">
+                            <source src="{% static 'sakshatro/video.mp4' %}" type="video/mp4" style="width: 100%;">
+                        </video>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="row align-items-center flex-column-reverse flex-lg-row">
+                    <div class="col-lg-7">
+                        <h3 class="gradient-text h1 mb-4">About Sakshat RO</h3>
+                        <p style="font-size: 1.3rem;">We believe that clean water is the foundation of a healthy life. Our team of certified technicians delivers fast, doorstep service with complete transparency and genuine spare parts.</p>
+                    </div>
+                    <div class="col-lg-5 mb-4 mb-lg-0">
+                        <img src="{% static 'sakshatro/water_glass.jpg' %}" class="about-img" alt="About Water">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <section class="services py-5" id="services">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-7">
+                    <h3 class="gradient-text h1">Our Extraordinary Services</h3>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card card-custom p-4">
+                        <div class="card-body text-center">
+                            Installation Services
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="card card-custom p-4">
+                        <div class="card-body text-center">
+                            Repair & Troubleshooting
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="card card-custom p-4">
+                        <div class="card-body text-center">
+                            Filter Replacement
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="card card-custom p-4">
+                        <div class="card-body text-center">
+                            AMC (Annual Maintenance Contract)
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="card card-custom p-4">
+                        <div class="card-body text-center">
+                            Commercial RO Services
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="card card-custom p-4">
+                        <div class="card-body text-center">
+                            Spare Parts Replacement
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                
+        </div>
+    </section>
+
+        <section id="contact">
+            <div class="container">
+                <h3 class="gradient-text text-center h1 mb-5">Contact Us</h3>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <form action="" method="post" class="text-start">
+                            <div class="mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" placeholder="Enter your name">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email/Phone</label>
+                                <input type="text" class="form-control" placeholder="How can we reach you?">
+                            </div>
+                            <button type="submit" class="btn btn-primary px-5">Send Message</button>
+                        </form>
+                        <br><br><br>
+                        <h1 style="color: white; font-family: Impact; font-size: 40px;">Or Call us at:<br>
+                            
+                        </h1>
+
+                        <br>    
+                        <h1 style="color: rgb(208, 242, 40);">9997017033</h1>
+                        
+                    </div>
+                    <div class="col-lg-6">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3548.134845526685!2d77.9931685749578!3d27.214915847039073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39747760910ea537%3A0x49ec2ad30f7b99d6!2sSakshat%20Enterprises!5e0!3m2!1sen!2sus!4v1774107801364!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% endblock %}
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>

@@ -1,0 +1,19 @@
+{% extends 'sakshatro/index.html' %}
+
+{% load static %}
+
+
+{% block login %}
+
+<div class="container">
+<div class="card" style="width: 18rem;" >
+  <img src="{% static 'sakshatro/failed2.png' %}" class="card-img-top" alt="Payment Failed">
+  <div class="card-body">
+    <h1><p class="card-text" style="color: red;">Payment Failed!</p></h1>
+    <a href="{% url 'payment' %}" class="btn btn-primary">Try Again</a>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

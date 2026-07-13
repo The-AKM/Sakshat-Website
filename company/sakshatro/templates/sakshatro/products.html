@@ -1,0 +1,51 @@
+{% extends 'sakshatro/index.html' %}
+{% block login %}
+<section id="products">
+    
+    <!-- All the products of the company -->
+    <div id="multi" class="container px-4 text-center">
+    <div class="row justify-content-center">
+        
+
+        {% for product in products %}
+        <div id="col" class="col-12 col-md-6" style="background-color: white;">
+        <div class="p-3">{{ product.name }} <br>
+            <img src="{{ product.image.url }}" class="img-thumbnail" width="300px" >
+        </div>
+        <div style="font-size: 25px;" class="p-3">Features:
+            <br>
+
+            {% for feature in product.features.all %}
+            <ul>
+                <li style="font-size: 17px;">✔{{ feature.name }}</li>
+            </ul>
+            {% endfor %}
+
+        </div>
+        <a href="{% url 'buy' product.id %}"><button id="buy">Buy Now</button></a> <br> <br>
+
+        <div class="d-flex justify-content-center">
+        <form action="{% url 'add_to_cart' product.id %}">
+        <button id="add_to_cart" type="submit">Add To Cart</button></a> <br>
+        
+        <!--  The control of quantity -->
+        <div class="quantity-control" style="font-family: Arial, Helvetica, sans-serif;">
+        <input name="quantity" type="number" id="quantity" value="1" min="1" style="width: 60px;">
+        
+        </div>
+        </div>
+
+
+        </form>
+
+
+        <br><br>
+        </div>
+        {% endfor %}
+
+
+        
+    
+    </section>
+
+{% endblock %}
