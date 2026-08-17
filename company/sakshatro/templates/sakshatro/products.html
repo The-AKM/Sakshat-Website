@@ -22,7 +22,7 @@
             {% endfor %}
 
         </div>
-        <a href="{% url 'buy' product.id %}"><button id="buy">Buy Now</button></a> <br> <br>
+        <a href="{% url 'buy' product.id %}"><button id="product" style="width: 300px;">Buy Now</button></a> <br> <br>
 
         <div class="d-flex justify-content-center">
         <form action="{% url 'add_to_cart' product.id %}">
