@@ -11,7 +11,7 @@ import razorpay
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 import json, hmac, hashlib
-import ngrok
+
 
 # Create your views here.
 def index(request):
